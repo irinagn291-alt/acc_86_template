@@ -4,6 +4,7 @@ import SwiftData
 
 @main
 struct PenduloraApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
     let container: ModelContainer
     @StateObject private var services: PenduloraServices
@@ -12,7 +13,6 @@ struct PenduloraApp: App {
     @State private var webContentURL: String?
 
     init() {
-        AppConfiguration.serverBaseURL = PortalConfig.apiDomain
         do {
             let container = try VaultPersistence.makeContainer()
             self.container = container
